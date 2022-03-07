@@ -1,5 +1,7 @@
 $(function () {
     var layer = layui.layer;
+
+
     //定义美化时间的过滤器
     template.defaults.imports.dataFormat = function (date) {
         const dt = new Date(date);
@@ -11,10 +13,13 @@ $(function () {
         var ss = padZero(dt.getSeconds());
         return y + '-' + m + '-' + d + ' ' + hh + ':' + mm + ':' + ss
     }
+
+
     //定义补零的函数
     function padZero(n) {
         return n > 9 ? n : '0' + n
     }
+
 
     //定义一个查询的参数对象，将来请求数据的时候，
     //需要将请求参数对象提交到服务器
@@ -24,6 +29,8 @@ $(function () {
         cate_id: '',//文章分类的Id
         state: ''//文章发布状态
     };
+
+    
     initTable();
     //获取文章列表数据的方法
     function initTable() {
