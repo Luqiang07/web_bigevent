@@ -16,28 +16,18 @@
         <div class="layui-card-header">文章列表</div>
         <div class="layui-card-body">
             <!-- 筛选区域 -->
-            <form class="layui-form layui-form-pane">
-                <!-- 分类 -->
+            <form class="layui-form layui-form-pane" id="form-search">
                 <div class="layui-form-item layui-inline">
-                    <label class="layui-form-label">分类</label>
-                    <div class="layui-input-block">
-                        <!-- 文章分类的下拉菜单 -->
-                        <select name="cate_id">
-                            <option value="">请选择分类</option>
-                        </select>
-                    </div>
+                    <select name="cate_id"></select>
                 </div>
                 <!-- 状态 -->
                 <div class="layui-form-item layui-inline">
-                    <label class="layui-form-label">状态</label>
-                    <div class="layui-input-block">
                         <!-- 筛选状态的下拉菜单 -->
                         <select name="state">
                             <option value="">请选择状态</option>
                             <option value="已发布">已发布</option>
                             <option value="草稿">草稿</option>
                         </select>
-                    </div>
                 </div>
                 <!-- 筛选按钮 -->
                 <div class="layui-form-item layui-inline">
@@ -54,7 +44,7 @@
                 <colgroup>
                     <col>
                     <col width="200">
-                    <col width="230">
+                    <col width="200">
                     <col width="200">
                     <col width="200">
                 </colgroup>
@@ -90,6 +80,14 @@
         </td>
     </tr>
     {{/each}}
+  </script>
+
+    <!-- 分类可选项的模板结构 -->
+    <script type="text/html" id="tpl-cate">
+      <option value="">所有分类</option>
+      {{each data}}
+      <option value="{{$value.Id}}">{{$value.name}}</option>
+      {{/each}}
   </script>
     <!-- 导入layui.js库 -->
     <script src="/assets/lib/layui/layui.all.js"></script>
