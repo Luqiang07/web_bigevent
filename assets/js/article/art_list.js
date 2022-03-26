@@ -40,12 +40,16 @@ $(function () {
             url: '/my/article/list',
             data: q,
             success: function (res) {
-                if (res.status !== 0) {
+                if (res[0].is_delete !== 0) {
                     return layer.msg('获取文章列表失败')
                 }
+                var a = {}
+                a.data = res
+                console.log(a);
                 //使用模板引擎渲染数据
-                var htmlStr = template('tpl-table', res);
+                var htmlStr = template('tpl-table', a);
                 $('tbody').html(htmlStr);
+                renderPage(res)
             }
         })
     }
@@ -78,5 +82,12 @@ $(function () {
         //根据最新筛选条件重新渲染页面
         initTable();
     })
+
+
+
+    //定义渲染分页的方法
+    function renderPage() {
+
+    }
 
 })
